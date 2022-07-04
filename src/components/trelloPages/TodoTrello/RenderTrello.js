@@ -2,7 +2,7 @@ import { Fragment, useState } from "react"
 import { useDispatch, useSelector } from "react-redux/es/exports"
 import styled, { css } from "styled-components"
 import TextareaTodo from "./TextareaTodo"
-import { todoActions } from "../../../store/reducers/todoSlice"
+import { todoActions } from "../../../store/slice/todoSlice"
 import ReactTextareaAutosize from "react-textarea-autosize"
 import Modal from "../../UI/Modal"
 
@@ -11,7 +11,6 @@ import Modal from "../../UI/Modal"
 const RenderTrello=(props)=>{
     const {modalIsValid}=useSelector(state=>state.ui)
     const todo=useSelector(state=>state.todo.todos)
-    console.log(todo);
     const [state,setState]=useState(false)
     
     
@@ -38,7 +37,7 @@ const RenderTrello=(props)=>{
                     <BackDiv>
                     <CartDiv>
                     <span className="span-todo">{props.name}</span>
-                    <span onClick={deleteHandler} className="icon-span">...</span>
+                    <span onClick={deleteHandler} className="icon-span">✕</span>
                     </CartDiv>    
                     
                     <TextareaTodo items={props.items}/>             

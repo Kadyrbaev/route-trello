@@ -1,7 +1,7 @@
 
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
-import { todoActions } from "../../../store/reducers/todoSlice"
+import { todoActions } from "../../../store/slice/todoSlice"
 
 
 const TrelloHeaderPage=()=>{

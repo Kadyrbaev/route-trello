@@ -23,9 +23,7 @@ const uiSlice = createSlice({
         noModal(state){
             state.modalIsValid = false
         },
-        exit(state,action){
 
-        }
     }
 })
 

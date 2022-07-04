@@ -1,29 +1,21 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Link, useHistory } from "react-router-dom"
 import styled from "styled-components"
-import { FetchList, fetchPost } from "../../store/reducers/fetchfirebace/fetchActions"
-import { todoActions } from "../../store/reducers/todoSlice"
+import { todoActions } from "../../store/slice/todoSlice"
 import RegistrImg from "./RegistrImg"
 
 
 const RegistrPageSection=()=>{
     
-    let pass = useSelector(state=>state.todo.pass)
     let isLoaded = useSelector(state=>state.todo.isLoaded)
-
+    const history = useHistory()
     
     const[name,setName]=useState('')
     const[password,setPassword]=useState('')
     const[isValid,setIsValid]=useState('')
 
     const dispatch = useDispatch()
-
-    // useEffect(()=>{
-    //     dispatch(fetchPost({name:'sadyr@gmail.com', pass: "123456"}))
-    // },[])
-    // useEffect(()=>{
-    //     dispatch(FetchList())
-    // },[name,password])
 
     function inpHand(e){
        setName(e.target.value)
@@ -34,24 +26,27 @@ const RegistrPageSection=()=>{
 
     let validation;
     if(password.length>0 && password.length<5){
-        console.log(555);
         validation=<span>length != 0</span>
     }
     if(name.length >0 && name.length<5){
         validation=<span>length +5</span>
     }
-
+    
+    useEffect(()=>{
+        dispatch(todoActions.validation({name, password}))
+    },[name, password])
 
         
     function subDataHandler(e){
         e.preventDefault()
         setPassword('')
         setName('')
-        dispatch(todoActions.validation({name, password}))
-        let a = <Valid>-Wrong login/password.</Valid>
-        console.log(a);
+        
+        let a = <Valid>-Wrong login/password.</Valid> 
         if(!isLoaded){
             setIsValid(a)
+        }else{
+            history.push("/bodytrello")
         }
     }
 
@@ -64,7 +59,7 @@ const RegistrPageSection=()=>{
                 <input value={name} onChange={inpHand} placeholder="Укажите адрес электронной почты"></input>
                 {validation}
                 <input value={password} onChange={inpPass} placeholder="Введите пароль"></input>
-                <button type="submit" className="form-btn">Войти</button>
+                <button type="submit" className="form-btn">  Войти </button> 
             </form>
             <p>ИЛИ</p>
                 <RegistrImg/>
@@ -101,6 +96,7 @@ export const SectionPage = styled.section`
     .form-btn{
         padding: 6px;
         font-weight: 800;
+        width: 100%;
         background: #5AAC44;
         color: white;
         border: none;
@@ -164,5 +160,8 @@ const Valid =styled.p`
         color: red;
         margin-top: 6px;
     
+`
+const hiberA = styled.a`
+
 `
 

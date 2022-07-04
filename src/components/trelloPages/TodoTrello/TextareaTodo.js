@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { uiActions } from "../../../store/reducers/uiSlice";
+import { uiActions } from "../../../store/slice/uiSlice";
 
 function TextareaTodo(props){
     const dispatch = useDispatch()

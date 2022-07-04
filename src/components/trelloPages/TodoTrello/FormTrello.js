@@ -1,8 +1,8 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux/es/exports"
-import { todoActions } from "../../../store/reducers/todoSlice"
-import { uiActions } from "../../../store/reducers/uiSlice"
+import { todoActions } from "../../../store/slice/todoSlice"
+import { uiActions } from "../../../store/slice/uiSlice"
 import NewComponent from "./NewComponent"
 
 
@@ -24,7 +24,6 @@ function FormTrello(){
         dispatch(todoActions.todoLogic(data))
         }
         setData('')
-        console.log(1);
     }
 
     function submitSpan(){
@@ -32,7 +31,6 @@ function FormTrello(){
     }
     function submitHandlerFalse(e){
         e.preventDefault()
-        console.log(9);
         dispatch(uiActions.formIsLoaded())
     }
     return(

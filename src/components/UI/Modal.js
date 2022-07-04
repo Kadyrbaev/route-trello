@@ -1,17 +1,17 @@
 
 
 import ReactDOM  from "react-dom"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import styled from "styled-components"
-import { todoActions } from "../../store/reducers/todoSlice"
-import { uiActions } from "../../store/reducers/uiSlice"
+import { todoActions } from "../../store/slice/todoSlice"
+import { uiActions } from "../../store/slice/uiSlice"
 
  const Overlay = ()=>{
     return <Over></Over>
 }
 
  const ModalOverlay =(props)=>{
-    const {modalIsValid}=useSelector(state=>state.ui)
+    
     const dispatch=useDispatch()
     function modalHandler(){
         dispatch(uiActions.noModal())
@@ -40,7 +40,7 @@ import { uiActions } from "../../store/reducers/uiSlice"
             </div>
         </div>
         
-        <div  onClick={modalHandler}><span onClick={modalHandler}>✕</span>
+        <DivHalf  onClick={modalHandler}><span onClick={modalHandler}>✕</span>
             <div>
                 <span>Действия со списком</span>
             </div>
@@ -61,7 +61,7 @@ import { uiActions } from "../../store/reducers/uiSlice"
             <div>Каждый день</div>
             <hr/>
             <button onClick={()=>deleteHandler(props.props)}>Архивировать список</button>
-        </div>
+        </DivHalf>
     </OverlayModal>
     )
 }
@@ -97,11 +97,10 @@ const OverlayModal = styled.div`
   height: 550px;
   background: white;
   z-index: 10;
-  border-radius: 16px;
+  border-radius: 10px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-    cursor: pointer;
   position: fixed;
-  top: 55%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -118,10 +117,9 @@ const OverlayModal = styled.div`
     background-color: white;
   }
 `
-// const Container = styled.div`
-//     display: flex;
-//     flex-direction: column;
-// `
+const DivHalf = styled.div`
+    cursor: pointer;
+`
 const BackColor=styled.div`
     background-color: rgb(204, 200, 200);
     padding: 20px;

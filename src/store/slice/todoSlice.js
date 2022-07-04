@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { useEffect } from "react";
 
 const initialState = {
     todos: [],
@@ -23,16 +22,13 @@ const cartSlice = createSlice({
         },
 
         validation(state,action){
-            console.log(action);
-            console.log(state.name);
             if(state.name === action.payload.name && state.pass === action.payload.password){
-                console.log(3);
-                state.isLoaded=true
-                
+                state.isLoaded=true  
+            }else{
+                state.isLoaded = false
             }
         },
         textareaTodo(state,action){
-            console.log(action);
             if(action.payload.value !==""){
             const id = action.payload.id
             const newItem = state.todos.find((el)=>el.id ===id)
@@ -43,7 +39,6 @@ const cartSlice = createSlice({
         }    
         },
         deleteCart(state,action){
-            console.log(action.payload);
             const newTodos = state.todos.filter((el)=>{
                 if(el.id !== action.payload){
                     return el

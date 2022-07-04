@@ -4,8 +4,7 @@ import NoLogicHeader from "../trelloHeaders/NoLogicHeader"
 import FormTrello from "../TodoTrello/FormTrello"
 import ModalForm from "./ModalForm"
 import { useState } from "react"
-
-import ocean from '../trelloBody/ocean.avif'
+import ocean from '../../../assets/ocean.avif'
 
 
 const BodyPageTrello=()=>{
@@ -70,7 +69,7 @@ const Fix = styled.div`
 `
 const DIv3 = styled.div`
         display: flex;
-        height: 556px;
+        height: 636px;
         max-width: 1600px;
         overflow: auto;
 
